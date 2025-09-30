@@ -1,20 +1,16 @@
-/* ✅ Background covers entire viewport */
 body {
   margin: 0;
   background: linear-gradient(120deg, #e0eaff 0%, #f7f7fa 60%, #d9f1e1 100%);
   font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
 }
 
 .bg {
-  max-width: 1280px;
-  width: 100%;
   min-height: 100vh;
-  margin: 0 auto;
+  width: 100%;  
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 0 1rem; 
-  box-sizing: border-box;
 }
 
 .centerBox {
@@ -25,6 +21,25 @@ body {
   padding: 2.5rem 2rem 2rem 2rem;
   max-width: 600px;
   width: 100%;
+  position: relative;
+}
+
+.logoWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: -1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.logo {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(4px);
+  padding: 6px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 
 .heading {
@@ -33,7 +48,7 @@ body {
   font-weight: 700;
   color: #294b6b;
   letter-spacing: 1px;
-  margin-bottom: 1.7rem;
+  margin: 0 0 1.7rem;
 }
 
 .form {
@@ -88,9 +103,10 @@ body {
 
 .guidance {
   margin-top: 2rem;
-  font-size: 1.2rem;
-  color: #6a7a8b;
+  font-size: 1.05rem;
+  color: #536272;
   text-align: center;
+  line-height: 1.4;
 }
 
 .resultWrapper {
@@ -99,6 +115,7 @@ body {
   border-radius: 16px;
   box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
   padding: 1.5rem 1rem 1rem 1rem;
+  animation: fadeIn 0.35s ease;
 }
 
 .resultHeading {
@@ -110,10 +127,18 @@ body {
 }
 
 .resultMeta {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #4097ff;
   text-align: center;
   margin-bottom: 0.7rem;
+}
+
+.dirtyHint {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: -0.2rem;
+  margin-bottom: 0.8rem;
+  color: #999;
 }
 
 .roomList {
@@ -122,35 +147,40 @@ body {
   margin: 0;
   padding: 0;
   font-family: monospace;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   color: #284b4b;
-  text-align: center;
+  text-align: left;
 }
 .roomList li {
   margin-bottom: 0.3em;
-  padding: 0.2em 0.5em;
+  padding: 0.25em 0.55em;
   border-radius: 6px;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s;
 }
 .roomList li:hover {
   background: #e6f6ff;
+  transform: translateX(2px);
 }
 
-
-@media (max-width: 900px) {
+@media (max-width: 640px) {
   .roomList {
-    columns: 2; 
+    columns: 2;
+    font-size: 0.95rem;
   }
-}
-
-@media (max-width: 600px) {
   .heading {
-    font-size: 1.8rem;
+    font-size: 2.1rem;
   }
   .centerBox {
-    padding: 1.5rem 1rem; 
+    margin: 2rem 1rem;
+    padding: 2rem 1.25rem 1.5rem;
   }
-  .roomList {
-    columns: 1; 
+  .logo {
+    width: 60px;
+    height: 60px;
   }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }

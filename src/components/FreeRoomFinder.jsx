@@ -12,9 +12,29 @@ export default function FreeRoomFinder({ index }) {
   const [hasSearched, setHasSearched] = useState(false);
 
   const canSubmit = day !== "" && slotKey !== "";
+  const inputsDirty = hasSearched && (day !== queryDay || slotKey !== querySlot);
 
-  const inputsDirty = hasSearched &&
-    (day !== queryDay || slotKey !== querySlot);
+  function formatSlotLabel(slot) {
+    if (!slot.includes('-')) return slot;
+    const [start, end] = slot.split('-');
+
+    const to12 = (hm) => {
+      const [H, M] = hm.split(':');
+      let h = parseInt(H, 10);
+      const suffix = h >= 12 ? 'PM' : 'AM';
+      h = h % 12;
+      if (h === 0) h = 12;
+      return { h, M, suffix };
+    };
+
+    const s = to12(start);
+    const e = to12(end);
+
+    if (s.suffix === e.suffix) {
+      return `${s.h}:${s.M}-${e.h}:${e.M} ${s.suffix}`;
+    }
+    return `${s.h}:${s.M} ${s.suffix}-${e.h}:${e.M} ${e.suffix}`;
+  }
 
   const freeRooms = useMemo(() => {
     if (!index || !queryDay || !querySlot) return [];
@@ -32,6 +52,10 @@ export default function FreeRoomFinder({ index }) {
   return (
     <div className={styles.bg}>
       <div className={styles.centerBox}>
+        <div className={styles.logoWrap}>
+          <img src="/icon.png" alt="App logo" className={styles.logo} />
+        </div>
+
         <h1 className={styles.heading}>Free Classroom Finder</h1>
 
         <form onSubmit={handleSubmit} className={styles.form}>
@@ -48,18 +72,20 @@ export default function FreeRoomFinder({ index }) {
             </select>
           </label>
 
-            <label className={styles.label}>
-              Timeslot
-              <select
-                className={styles.select}
-                value={slotKey}
-                onChange={e => setSlotKey(e.target.value)}>
-                <option value="">Select time slot</option>
-                {FIXED_SLOTS.map(s => (
-                  <option key={s.key} value={s.key}>{s.key}</option>
-                ))}
-              </select>
-            </label>
+          <label className={styles.label}>
+            Timeslot
+            <select
+              className={styles.select}
+              value={slotKey}
+              onChange={e => setSlotKey(e.target.value)}>
+              <option value="">Select time slot</option>
+              {FIXED_SLOTS.map(s => (
+                <option key={s.key} value={s.key}>
+                  {formatSlotLabel(s.key)}
+                </option>
+              ))}
+            </select>
+          </label>
 
           <button
             type="submit"
@@ -83,11 +109,15 @@ export default function FreeRoomFinder({ index }) {
         {hasSearched && queryDay && querySlot && (
           <div className={styles.resultWrapper}>
             <h2 className={styles.resultHeading}>
-              Free rooms on <span style={{ color: '#51e2c2' }}>{queryDay}</span>
-              {" "}(<span style={{ color: '#4097ff' }}>{querySlot}</span>)
+              Free rooms on <span style={{ color: '#51e2c2' }}>{queryDay}</span>{" "}
+              (<span style={{ color: '#4097ff' }}>{formatSlotLabel(querySlot)}</span>)
             </h2>
 
-            {inputsDirty}
+            {inputsDirty && (
+              <p className={styles.dirtyHint}>
+                You changed selections. Press "Find Free Rooms" to refresh results.
+              </p>
+            )}
 
             {freeRooms.length === 0 ? (
               <p className={styles.resultMeta}>No free rooms found.</p>
