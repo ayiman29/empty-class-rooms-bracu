@@ -53,7 +53,7 @@ export default function FreeRoomFinder({ index }) {
     <div className={styles.bg}>
       <div className={styles.centerBox}>
         <div className={styles.logoWrap}>
-          <img src="/icon.png" alt="App logo" className={styles.logo} />
+          <img src="/icon.png" alt="Binoculars icon by riajulislam - Flaticon" className={styles.logo} />
         </div>
 
         <h1 className={styles.heading}>Free Classroom Finder</h1>
