@@ -6,9 +6,18 @@ export default function App() {
 
   return (
     <div>
-      {loading}
-      {error && <p style={{ color: 'red', padding: '1rem' }}>Error: {error}</p>}
+      {loading && (
+        <div
+          style={{
+            margin: 0,
+            background: "linear-gradient(120deg, #000000 0%, #13132c 60%, #060120 100%)",
+          }}
+        >
+          {loading}
+        </div>
+      )}
+      {error && <p style={{ color: "red", padding: "1rem" }}>Error: {error}</p>}
       {index && <FreeRoomFinder index={index} />}
     </div>
-  );
-}
+    );
+  }
