@@ -1,13 +1,5 @@
-// processSchedule.js
-// Builds indices for fixed discrete lecture slots and finds free (non-lab) rooms.
-//
-// Change requested:
-//  - Removed UB pattern from ROOM_CODE_REGEX (so UB0000 etc. are ignored)
-//  - Keep rooms ending with 'T' (EXCLUDE_ROOM_SUFFIX_T = false)
-//  - Still excluding labs entirely (sectionType === 'LAB', lab schedules, lab rooms)
-
 const ROOM_CODE_REGEX = /\b(?:FT\d{2}-\d{2}[A-Z]|\d{2}[A-Z]-\d{2}[A-Z])\b/g;
-// Removed: |UB\d{4}
+
 
 export const FIXED_SLOTS = [
   { key: '08:00-09:20', start: '08:00:00', end: '09:20:00' },
@@ -28,7 +20,7 @@ export const ALLOWED_DAYS = [
   'THURSDAY'
 ];
 
-// Excluding lab-style rooms (ending with L); keep T
+
 const EXCLUDE_ROOM_SUFFIX_L = true;
 const EXCLUDE_ROOM_SUFFIX_T = false;
 
@@ -45,7 +37,6 @@ function toMinutes(timeStr) {
 }
 
 function intervalsOverlap(aStart, aEnd, bStart, bEnd) {
-  // Half-open intervals: [start, end)
   return aStart < bEnd && bStart < aEnd;
 }
 
@@ -59,7 +50,6 @@ export function buildScheduleIndex(sections) {
   const masterRoomSet = new Set();
   const daySlotOccupied = {};
 
-  // Initialize structure
   for (const d of ALLOWED_DAYS) {
     daySlotOccupied[d] = {};
     FIXED_SLOTS.forEach(slot => {
