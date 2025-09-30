@@ -98,10 +98,7 @@ export default function FreeRoomFinder({ index }) {
         {!hasSearched && (
           <div className={styles.guidance}>
             <p>
-              <b>Welcome!</b> Select a day and a time slot above to find all free classrooms.<br />
-              <span style={{ fontSize: "0.95rem" }}>
-                Now you can easily plan group study, meetings or quick classes!
-              </span>
+              <b>Welcome! Select a day and a time slot above to find all free classrooms.</b><br />
             </p>
           </div>
         )}
@@ -109,8 +106,8 @@ export default function FreeRoomFinder({ index }) {
         {hasSearched && queryDay && querySlot && (
           <div className={styles.resultWrapper}>
             <h2 className={styles.resultHeading}>
-              Free rooms on <span style={{ color: '#51e2c2' }}>{queryDay}</span>{" "}
-              (<span style={{ color: '#4097ff' }}>{formatSlotLabel(querySlot)}</span>)
+              Free rooms on <span style={{ color: '#9392e7' }}>{queryDay}</span>{" "}
+              (<span style={{ color: '#9392e7' }}>{formatSlotLabel(querySlot)}</span>)
             </h2>
 
             {inputsDirty && (
