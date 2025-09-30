@@ -1,0 +1,156 @@
+/* ✅ Background covers entire viewport */
+body {
+  margin: 0;
+  background: linear-gradient(120deg, #e0eaff 0%, #f7f7fa 60%, #d9f1e1 100%);
+  font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+}
+
+.bg {
+  max-width: 1280px;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 1rem; 
+  box-sizing: border-box;
+}
+
+.centerBox {
+  margin: 3rem auto;
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.13);
+  border-radius: 24px;
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 600px;
+  width: 100%;
+}
+
+.heading {
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: 700;
+  color: #294b6b;
+  letter-spacing: 1px;
+  margin-bottom: 1.7rem;
+}
+
+.form {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #294b6b;
+  gap: 0.4rem;
+}
+
+.select, .button {
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid #b3c7e6;
+  font-size: 1rem;
+  background: #f5f8fa;
+  outline: none;
+  transition: border 0.2s;
+}
+.select:focus {
+  border: 1.5px solid #4097ff;
+}
+
+.button {
+  background: linear-gradient(90deg, #4097ff 40%, #51e2c2 100%);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 2px 8px 0 rgba(100, 180, 255, 0.12);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.button:disabled {
+  background: #b3c7e6;
+  color: #fff;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.button:hover:not(:disabled) {
+  background: linear-gradient(90deg, #4097ff 20%, #51e2c2 100%);
+  box-shadow: 0 4px 12px 0 rgba(100, 180, 255, 0.24);
+}
+
+.guidance {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: #6a7a8b;
+  text-align: center;
+}
+
+.resultWrapper {
+  margin-top: 1rem;
+  background: rgba(240,245,255,0.85);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
+  padding: 1.5rem 1rem 1rem 1rem;
+}
+
+.resultHeading {
+  margin: 0 0 0.8rem 0;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+  color: #294b6b;
+}
+
+.resultMeta {
+  font-size: 1rem;
+  color: #4097ff;
+  text-align: center;
+  margin-bottom: 0.7rem;
+}
+
+.roomList {
+  columns: 3;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  font-size: 1.05rem;
+  color: #284b4b;
+  text-align: center;
+}
+.roomList li {
+  margin-bottom: 0.3em;
+  padding: 0.2em 0.5em;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.roomList li:hover {
+  background: #e6f6ff;
+}
+
+
+@media (max-width: 900px) {
+  .roomList {
+    columns: 2; 
+  }
+}
+
+@media (max-width: 600px) {
+  .heading {
+    font-size: 1.8rem;
+  }
+  .centerBox {
+    padding: 1.5rem 1rem; 
+  }
+  .roomList {
+    columns: 1; 
+  }
+}
