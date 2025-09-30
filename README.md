@@ -79,9 +79,13 @@ npm run preview
 ---
 
 ## Attribution
-
+  
 - Project maintained by: [@ayiman29](https://github.com/ayiman29)
 - Data & API credit: [@eniamza](https://github.com/eniamza) — https://usis-cdn.eniamza.com/connect.json
+- Icon: `<img src="/icon.png" alt="Binoculars icon by riajulislam - Flaticon">`  
+  Binoculars icons created by riajulislam — Flaticon  
+  https://www.flaticon.com/free-icons/binoculars
+  (Used under Flaticon free license — attribution required.)
 
 ---
 
