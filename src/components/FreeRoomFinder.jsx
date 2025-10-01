@@ -99,6 +99,25 @@ export default function FreeRoomFinder({ index }) {
           <div className={styles.guidance}>
             <p>
               <b>Welcome! Select a day and a time slot above to find all free classrooms.</b><br />
+              <br />
+              <span className={styles.credit}>
+                Made by{" "}
+                <a
+                  href="https://github.com/ayiman29"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  @ayiman29
+                </a>{" "}
+                •{" "}
+                <a
+                  href="https://github.com/ayiman29/free-classroom-finder-bracu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Project Repo
+                </a>
+              </span>
             </p>
           </div>
         )}
